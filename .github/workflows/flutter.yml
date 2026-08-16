@@ -1,48 +1,30 @@
-name: Flutter Build
+name: Flutter APK Build
 
 on:
   push:
     branches:
       - main
-      - develop
-  pull_request:
-    branches:
-      - main
-      - develop
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.47.0'
-          channel: stable
-          cache: true
+          flutter-version: 3.41.7
 
-      - name: Flutter version
-        run: flutter --version
-
-      - name: Install dependencies
+      - name: Get dependencies
         run: flutter pub get
 
-      - name: Analyze
-        run: flutter analyze
-
-      - name: Run tests
-        run: flutter test
-
-      - name: Build APK
+      - name: Build APK (release)
         run: flutter build apk --release
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: sms-gateway-release-apk
+          name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk

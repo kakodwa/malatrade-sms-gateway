@@ -263,7 +263,7 @@ class _GatewayDashboardState extends State<GatewayDashboard> {
                       Switch.adaptive(
                         value: _isRunning,
                         onChanged: (_) => _togglePolling(),
-                        activeColor: const Color(0xFFFF8C00),
+                        activeThumbColor: Colors.green,
                       ),
                     ],
                   ),
