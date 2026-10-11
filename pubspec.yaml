@@ -39,6 +39,9 @@ dependencies:
   shelf: ^1.4.2
 
   shared_preferences: ^2.2.2
+  webview_flutter: ^4.14.1
+
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
